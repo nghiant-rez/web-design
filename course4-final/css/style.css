@@ -1,0 +1,95 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #dedede;
+}
+
+h1 {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 32px;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+}
+
+p {
+  font-size: 1.1em;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+figure {
+  margin: 0;
+  padding: 8px;
+  background-color: #f5f5f5;
+  border: 3px solid #999;
+  color: #333;
+}
+
+figcaption {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 5px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+/* Tablet view */
+@media (min-width: 772px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  figure {
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  figure:last-child {
+    grid-column: span 2;
+  }
+}
+
+/* Large screen view */
+@media (min-width: 992px) {
+  figure {
+    border-radius: 0;
+  }
+
+  figure:nth-child(3n) {
+    grid-column: span 2;
+  }
+}
+
+/* Prefers reduced motion */
+@media (prefers-reduced-motion) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Dark color scheme */
+@media (prefers-color-scheme: dark) {
+  figure {
+    background-color: #1a1a1a;
+    color: #ffd700;
+    border-color: #000;
+  }
+}
