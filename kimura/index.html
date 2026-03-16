@@ -15,13 +15,13 @@
     <img src="images/Kimura-logo.jpg" alt="Kimura BJJ Hanoi logo">
   </header>
 
-  <nav>
+  <nav aria-label="Main navigation">
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="training.html">Training</a></li>
       <li><a href="community.html">Community</a></li>
-      <li><a href="https://www.instagram.com/kimurabjjhanoi">Instagram</a></li>
       <li><a href="https://www.facebook.com/judojujitsuhanoi">Facebook</a></li>
+      <li><a href="https://www.instagram.com/kimurabjjhanoi">Instagram</a></li>
     </ul>
   </nav>
 
@@ -29,7 +29,7 @@
     <h1>Kimura Hanoi</h1>
 
     <p>Welcome to Kimura Hanoi &mdash; part of the international Kimura BJJ
-      association.       Located in the heart of My Dinh, Ha Noi, we offer Brazilian Jiu-Jitsu and Judo training
+      association. Located in the heart of My Dinh, Ha Noi, we offer Brazilian Jiu-Jitsu and Judo training
       for all levels. Whether you are stepping on the mats for the first
       time or training for competition, there is a place for you here.</p>
 
@@ -47,7 +47,7 @@
 
     <h2>Schedule</h2>
     <div class="schedule">
-      <p><strong>Classes run Monday / Wednesday / Friday</strong></p>
+      <p><strong>Classes every Monday / Wednesday / Friday</strong></p>
       <ul>
         <li>Morning &mdash; 06:00 &ndash; 07:30</li>
         <li>Noon &mdash; 12:00 &ndash; 13:30</li>
@@ -57,24 +57,128 @@
         Tang 2, Nha Van Hoa So 3, Phu My,
         246 Duong My Dinh, Ha Noi</p>
       <p><strong>Hotline:</strong> 096 5151 497</p>
-      <p><strong>Instagram:</strong>
-        <a href="https://www.instagram.com/kimurabjjhanoi">
-          @kimurabjjhanoi</a></p>
       <p><strong>Facebook:</strong>
         <a href="https://www.facebook.com/judojujitsuhanoi">
           Kimura BJJ My Dinh</a></p>
+      <p><strong>Instagram:</strong>
+        <a href="https://www.instagram.com/kimurabjjhanoi">
+          @kimurabjjhanoi</a></p>
+      
     </div>
+
+    <h2>Find Us</h2>
+    <div class="map-container">
+      <iframe
+        src="https://maps.google.com/maps?q=246+Duong+My+Dinh,+Nam+Tu+Liem,+Ha+Noi,+Vietnam&z=15&output=embed"
+        style="border:0" allowfullscreen="" loading="lazy"
+        title="Kimura Hanoi gym location on Google Maps">
+      </iframe>
+    </div>
+
+    <h2>Sign Up for a Free Trial Class</h2>
+    <form class="signup-form" id="signupForm" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" name="fullName"
+            placeholder="e.g. Nguyen Van A" aria-required="true">
+          <span class="error-msg" id="nameError">
+            Please enter your name.</span>
+        </div>
+        <div class="form-group">
+          <label for="gender">Gender</label>
+          <select id="gender" name="gender" aria-required="true">
+            <option value="">-- Select --</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+          <span class="error-msg" id="genderError">
+            Please select your gender.</span>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="dob">Date of Birth</label>
+          <input type="date" id="dob" name="dob"
+            aria-required="true">
+          <span class="error-msg" id="dobError">
+            Please enter your date of birth.</span>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone"
+            placeholder="e.g. 096 5151 497" aria-required="true">
+          <span class="error-msg" id="phoneError">
+            Please enter a valid phone number.</span>
+        </div>
+      </div>
+      <button type="submit">Register</button>
+      <p class="success-msg" id="successMsg">
+        Registration submitted! We will contact you soon.</p>
+    </form>
   </main>
 
   <footer>
     <p>Kimura Hanoi &mdash; Part of the Kimura BJJ Association</p>
     <p>
+      <a href="https://www.facebook.com/judojujitsuhanoi">Facebook</a>
+      &nbsp;|&nbsp;
       <a href="https://www.instagram.com/kimurabjjhanoi">Instagram</a>
       &nbsp;|&nbsp;
-      <a href="https://www.facebook.com/judojujitsuhanoi">Facebook</a>
-      &nbsp;|&nbsp; 096 5151 497
+       096 5151 497
     </p>
   </footer>
+
+  <script>
+    document.getElementById('signupForm')
+      .addEventListener('submit', function(e) {
+        e.preventDefault();
+        var valid = true;
+
+        var name = document.getElementById('fullName');
+        var nameErr = document.getElementById('nameError');
+        if (name.value.trim() === '') {
+          nameErr.style.display = 'block';
+          valid = false;
+        } else {
+          nameErr.style.display = 'none';
+        }
+
+        var gender = document.getElementById('gender');
+        var genderErr = document.getElementById('genderError');
+        if (gender.value === '') {
+          genderErr.style.display = 'block';
+          valid = false;
+        } else {
+          genderErr.style.display = 'none';
+        }
+
+        var dob = document.getElementById('dob');
+        var dobErr = document.getElementById('dobError');
+        if (dob.value === '') {
+          dobErr.style.display = 'block';
+          valid = false;
+        } else {
+          dobErr.style.display = 'none';
+        }
+
+        var phone = document.getElementById('phone');
+        var phoneErr = document.getElementById('phoneError');
+        var phonePattern = /^[0-9\s\-\+]{7,15}$/;
+        if (!phonePattern.test(phone.value.trim())) {
+          phoneErr.style.display = 'block';
+          valid = false;
+        } else {
+          phoneErr.style.display = 'none';
+        }
+
+        if (valid) {
+          document.getElementById('successMsg')
+            .style.display = 'block';
+        }
+      });
+  </script>
 
 </body>
 
